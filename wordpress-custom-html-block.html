@@ -1,0 +1,807 @@
+<!-- ============================================================
+     WORDPRESS CUSTOM HTML BLOCK — Artikel Desain Game Slot Modern
+     Cara pakai:
+     1. Di Gutenberg editor, klik + → cari "Custom HTML"
+     2. Paste SEMUA kode ini ke dalam blok tersebut
+     3. Klik Preview / Update untuk melihat hasilnya
+     ============================================================ -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* Semua class diberi prefix "slot-" agar tidak bentrok dengan tema WordPress */
+.slot-wrap {
+  --slot-gold: #C9A84C;
+  --slot-gold-light: #E8C96E;
+  --slot-dark: #0A0A0F;
+  --slot-dark-card: #111118;
+  --slot-mid: #1A1A28;
+  --slot-text: #E8E4D9;
+  --slot-muted: #8A8578;
+  --slot-accent: #FF6B35;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+  background: var(--slot-dark);
+  color: var(--slot-text);
+  /* Reset potensi konflik tema */
+  box-sizing: border-box;
+}
+
+.slot-wrap *, .slot-wrap *::before, .slot-wrap *::after {
+  box-sizing: border-box;
+}
+
+/* --- HERO --- */
+.slot-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 80px;
+  overflow: hidden;
+}
+
+.slot-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,168,76,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 80% 20%, rgba(255,107,53,0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #0A0A0F 0%, #0F0F1A 50%, #0A0A0F 100%);
+}
+
+.slot-reel-grid {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 55%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+  opacity: 0.15;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 70%, transparent 100%);
+}
+
+.slot-reel-col { display: flex; flex-direction: column; gap: 3px; }
+
+.slot-reel-symbol {
+  height: 90px;
+  background: var(--slot-mid);
+  border: 1px solid rgba(201,168,76,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  animation: slotSpin var(--dur, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes slotSpin {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  45% { transform: translateY(-10px); opacity: 0.6; }
+  50% { transform: translateY(10px); opacity: 0.4; }
+  55% { transform: translateY(0); opacity: 1; }
+}
+
+.slot-hero-tag { position: relative; z-index: 2; padding: 0 60px; margin-bottom: 28px; }
+
+.slot-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--slot-gold);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 2px;
+}
+
+.slot-tag-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--slot-gold);
+  animation: slotPulse 2s ease-in-out infinite;
+}
+
+@keyframes slotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.slot-hero-title {
+  position: relative;
+  z-index: 2;
+  padding: 0 60px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(48px, 7vw, 100px);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.slot-hero-title .slot-line1 { display: block; color: var(--slot-text); }
+.slot-hero-title .slot-line2 { display: block; color: var(--slot-gold); font-style: italic; }
+.slot-hero-title .slot-line3 { display: block; color: var(--slot-text); opacity: 0.3; }
+
+.slot-hero-sub {
+  position: relative;
+  z-index: 2;
+  padding: 24px 60px 0;
+  font-size: 15px;
+  color: var(--slot-muted);
+  max-width: 600px;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.slot-hero-divider {
+  position: relative;
+  z-index: 2;
+  margin: 48px 60px 0;
+  height: 1px;
+  background: linear-gradient(to right, var(--slot-gold), transparent);
+  opacity: 0.4;
+}
+
+/* --- ARTICLE BODY --- */
+.slot-article-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 60px;
+}
+
+.slot-intro-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 100px;
+  align-items: start;
+}
+
+.slot-dropcap::first-letter {
+  float: left;
+  font-family: 'Playfair Display', serif;
+  font-size: 5.5em;
+  font-weight: 900;
+  line-height: 0.75;
+  margin: 8px 16px -4px 0;
+  color: var(--slot-gold);
+}
+
+.slot-dropcap { font-size: 17px; line-height: 1.9; color: var(--slot-text); margin: 0; }
+
+.slot-stat-card {
+  background: var(--slot-dark-card);
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slot-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--slot-gold), var(--slot-accent));
+}
+
+.slot-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  font-weight: 900;
+  color: var(--slot-gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.slot-stat-label {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--slot-muted);
+  margin-bottom: 24px;
+}
+
+.slot-stat-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(232,228,217,0.6);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 20px;
+  margin-top: 4px;
+}
+
+/* --- SECTIONS --- */
+.slot-section { margin-bottom: 90px; }
+
+.slot-section-label {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--slot-gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slot-section-label::after {
+  content: '';
+  flex: 1;
+  max-width: 40px;
+  height: 1px;
+  background: var(--slot-gold);
+  opacity: 0.4;
+}
+
+.slot-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 32px;
+  color: var(--slot-text);
+}
+
+.slot-section-title em { color: var(--slot-gold); font-style: italic; }
+
+.slot-body-text {
+  font-size: 16px;
+  line-height: 1.9;
+  color: rgba(232,228,217,0.8);
+  max-width: 72ch;
+  margin: 0;
+}
+
+/* --- CARDS --- */
+.slot-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin: 48px 0;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.12);
+}
+
+.slot-card {
+  background: var(--slot-dark-card);
+  padding: 36px 32px;
+  transition: background 0.3s;
+}
+
+.slot-card:hover { background: var(--slot-mid); }
+
+.slot-card-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+
+.slot-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--slot-text);
+}
+
+.slot-card-text { font-size: 13.5px; line-height: 1.7; color: var(--slot-muted); margin: 0; }
+
+/* --- PULL QUOTE --- */
+.slot-pull-quote {
+  margin: 64px 0;
+  padding: 48px 60px;
+  border-left: 4px solid var(--slot-gold);
+  background: linear-gradient(to right, rgba(201,168,76,0.06), transparent);
+  position: relative;
+}
+
+.slot-pull-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -20px; left: 48px;
+  font-family: 'Playfair Display', serif;
+  font-size: 120px;
+  color: var(--slot-gold);
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.slot-pull-quote p {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 2.5vw, 30px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--slot-text);
+  margin: 0;
+}
+
+.slot-pull-quote cite {
+  display: block;
+  margin-top: 16px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--slot-gold);
+  font-style: normal;
+}
+
+/* --- SPLIT --- */
+.slot-split {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin: 48px 0;
+}
+
+.slot-split.slot-reverse { grid-template-columns: 1fr 1.2fr; }
+.slot-split.slot-reverse .slot-visual { order: -1; }
+
+.slot-visual {
+  background: var(--slot-dark-card);
+  border: 1px solid rgba(201,168,76,0.12);
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.slot-big-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: var(--slot-gold);
+  line-height: 1;
+  opacity: 0.15;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  animation: slotFlicker 4s ease-in-out infinite;
+}
+
+@keyframes slotFlicker {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.07; }
+}
+
+.slot-vis-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 40px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.slot-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--slot-gold);
+  opacity: var(--op, 0.15);
+  animation: slotDotFlick var(--dur2, 2s) ease-in-out infinite;
+  animation-delay: var(--dl, 0s);
+}
+
+@keyframes slotDotFlick {
+  0%, 100% { opacity: var(--op, 0.15); }
+  50% { opacity: 0.8; transform: scale(1.3); }
+}
+
+.slot-vis-caption {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--slot-muted);
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+.slot-sound-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 100px;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.slot-bar {
+  width: 8px;
+  background: linear-gradient(to top, var(--slot-gold), var(--slot-accent));
+  border-radius: 4px 4px 0 0;
+  animation: slotBarAnim var(--bd, 1s) ease-in-out infinite alternate;
+  animation-delay: var(--bdelay, 0s);
+}
+
+@keyframes slotBarAnim {
+  from { height: 10px; opacity: 0.3; }
+  to { height: var(--bh, 80px); opacity: 1; }
+}
+
+/* --- TIMELINE --- */
+.slot-timeline {
+  position: relative;
+  padding-left: 32px;
+  margin: 48px 0;
+}
+
+.slot-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--slot-gold), transparent);
+  opacity: 0.4;
+}
+
+.slot-tl-item { position: relative; margin-bottom: 40px; }
+
+.slot-tl-item::before {
+  content: '';
+  position: absolute;
+  left: -36px; top: 8px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--slot-gold);
+  box-shadow: 0 0 12px rgba(201,168,76,0.5);
+}
+
+.slot-tl-year { font-size: 11px; letter-spacing: 0.2em; color: var(--slot-gold); text-transform: uppercase; margin-bottom: 6px; }
+.slot-tl-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--slot-text); }
+.slot-tl-text { font-size: 14px; color: var(--slot-muted); line-height: 1.7; max-width: 60ch; margin: 0; }
+
+/* --- CLOSING --- */
+.slot-closing {
+  margin-top: 100px;
+  padding: 80px 60px;
+  background: var(--slot-dark-card);
+  border: 1px solid rgba(201,168,76,0.15);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.slot-closing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 70%);
+}
+
+.slot-closing h2 {
+  position: relative;
+  z-index: 1;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: var(--slot-text);
+}
+
+.slot-closing p {
+  position: relative;
+  z-index: 1;
+  font-size: 16px;
+  color: var(--slot-muted);
+  max-width: 55ch;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* --- FOOTER --- */
+.slot-footer {
+  text-align: center;
+  padding: 40px 60px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(138,133,120,0.4);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: var(--slot-dark);
+}
+
+/* --- REVEAL ANIMATION --- */
+.slot-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.slot-reveal.slot-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .slot-hero-title,
+  .slot-hero-tag,
+  .slot-hero-divider { padding-left: 28px; padding-right: 28px; }
+  .slot-hero-sub { padding: 20px 28px 0; }
+  .slot-article-body { padding: 60px 28px; }
+  .slot-intro-block { grid-template-columns: 1fr; gap: 36px; }
+  .slot-cards-grid { grid-template-columns: 1fr !important; }
+  .slot-split,
+  .slot-split.slot-reverse { grid-template-columns: 1fr !important; }
+  .slot-split.slot-reverse .slot-visual { order: 0; }
+  .slot-closing { padding: 48px 28px; }
+  .slot-pull-quote { padding: 36px 28px; }
+  .slot-footer { padding: 32px 28px; }
+}
+</style>
+
+<!-- ===================== HTML CONTENT ===================== -->
+<div class="slot-wrap">
+
+  <!-- HERO -->
+  <section class="slot-hero">
+    <div class="slot-hero-bg"></div>
+
+    <div class="slot-reel-grid">
+      <div class="slot-reel-col">
+        <div class="slot-reel-symbol" style="--dur:3.2s;--delay:0s">💎</div>
+        <div class="slot-reel-symbol" style="--dur:2.8s;--delay:0.4s">🎰</div>
+        <div class="slot-reel-symbol" style="--dur:3.5s;--delay:0.1s">⭐</div>
+      </div>
+      <div class="slot-reel-col">
+        <div class="slot-reel-symbol" style="--dur:2.5s;--delay:0.7s">🔔</div>
+        <div class="slot-reel-symbol" style="--dur:3.8s;--delay:0.2s">💰</div>
+        <div class="slot-reel-symbol" style="--dur:2.9s;--delay:0.5s">🍒</div>
+      </div>
+      <div class="slot-reel-col">
+        <div class="slot-reel-symbol" style="--dur:3.1s;--delay:0.3s">⚡</div>
+        <div class="slot-reel-symbol" style="--dur:2.7s;--delay:0.8s">🎯</div>
+        <div class="slot-reel-symbol" style="--dur:3.4s;--delay:0s">🌟</div>
+      </div>
+      <div class="slot-reel-col">
+        <div class="slot-reel-symbol" style="--dur:2.6s;--delay:0.6s">🃏</div>
+        <div class="slot-reel-symbol" style="--dur:3.3s;--delay:0.1s">💫</div>
+        <div class="slot-reel-symbol" style="--dur:2.9s;--delay:0.9s">🎲</div>
+      </div>
+      <div class="slot-reel-col">
+        <div class="slot-reel-symbol" style="--dur:3.6s;--delay:0.4s">👑</div>
+        <div class="slot-reel-symbol" style="--dur:2.8s;--delay:0.2s">💎</div>
+        <div class="slot-reel-symbol" style="--dur:3.0s;--delay:0.7s">🔥</div>
+      </div>
+    </div>
+
+    <div class="slot-hero-tag">
+      <span class="slot-tag-pill"><span class="slot-tag-dot"></span>Teknologi &amp; Budaya Game</span>
+    </div>
+
+    <h1 class="slot-hero-title">
+      <span class="slot-line1">Desain Game</span>
+      <span class="slot-line2">Slot Modern:</span>
+      <span class="slot-line3">Seni di Balik Gulungan</span>
+    </h1>
+
+    <p class="slot-hero-sub">Gabungan Teknologi, Musik, dan Visual yang Mengubah Cara Kita Bermain — Selamanya</p>
+    <div class="slot-hero-divider"></div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <main class="slot-article-body">
+
+    <!-- INTRO -->
+    <div class="slot-intro-block slot-reveal">
+      <div>
+        <p class="slot-dropcap">
+          Bayangkan duduk di depan layar, lampu temaram, dan tiba-tiba seluruh dunia di sekitar kamu menghilang. Suara koin bergerincing, musik dramatis mengalun naik turun, dan animasi memukau muncul di depan mata — seolah kamu bukan sekadar bermain game, tapi sedang menonton film blockbuster yang <em>kamu</em> kendalikan. Itulah kekuatan desain game slot modern: sebuah simfoni antara teknologi mutakhir, komposisi musik yang diperhitungkan secara psikologis, dan visual yang dirancang untuk menghipnotis. Tapi bagaimana semua itu diciptakan? Siapa arsitek di balik pengalaman yang begitu kuat memikat indra kita?
+        </p>
+      </div>
+      <div class="slot-stat-card">
+        <div class="slot-stat-num">$87B</div>
+        <div class="slot-stat-label">Nilai Pasar Global Game Slot 2024</div>
+        <div class="slot-stat-desc">Industri ini tumbuh bukan karena keberuntungan semata — melainkan karena desain yang semakin canggih, mengintegrasikan neurosains, teknologi audio, dan kecerdasan buatan ke dalam setiap putaran gulungan.</div>
+        <div class="slot-stat-num" style="font-size:40px;margin-top:20px;">3.000+</div>
+        <div class="slot-stat-label">Jam Riset Desain Per Judul AAA</div>
+        <div class="slot-stat-desc">Studio terkemuka menghabiskan ribuan jam hanya untuk menyempurnakan satu efek suara kemenangan — detail kecil yang berdampak besar pada pengalaman pemain.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 1 -->
+    <section class="slot-section slot-reveal">
+      <div class="slot-section-label">01 — Fondasi Teknologi</div>
+      <h2 class="slot-section-title">Saat Matematika Bertemu <em>Seni</em></h2>
+
+      <div class="slot-split">
+        <div>
+          <p class="slot-body-text">Di balik setiap gulungan yang berputar, tersembunyi sebuah mesin matematika yang sangat presisi: <strong style="color:var(--slot-gold)">Random Number Generator (RNG)</strong>. Tidak seperti mesin slot mekanik era 1970-an yang mengandalkan per dan tuas fisik, slot digital modern menggunakan algoritma kriptografik yang menghasilkan miliaran kombinasi per detik.</p>
+          <p class="slot-body-text" style="margin-top:20px;">Yang menarik adalah bagaimana teknologi ini <em>tersembunyi</em> di balik lapisan desain visual yang kaya. Para pemain tidak melihat angka dan algoritma — mereka melihat karakter-karakter heroik, simbol-simbol mitologis, dan dunia-dunia fantasi yang penuh detail.</p>
+        </div>
+        <div class="slot-visual">
+          <div class="slot-big-num">01001101</div>
+          <div class="slot-vis-dots">
+            <div class="slot-dot" style="--op:0.7;--dur2:1.2s;--dl:0.1s"></div>
+            <div class="slot-dot" style="--op:0.3;--dur2:1.8s;--dl:0.3s"></div>
+            <div class="slot-dot" style="--op:0.9;--dur2:1.0s;--dl:0.0s"></div>
+            <div class="slot-dot" style="--op:0.2;--dur2:2.2s;--dl:0.5s"></div>
+            <div class="slot-dot" style="--op:0.6;--dur2:1.5s;--dl:0.2s"></div>
+            <div class="slot-dot" style="--op:0.8;--dur2:0.9s;--dl:0.7s"></div>
+            <div class="slot-dot" style="--op:0.4;--dur2:1.7s;--dl:0.4s"></div>
+            <div class="slot-dot" style="--op:0.95;--dur2:1.1s;--dl:0.1s"></div>
+            <div class="slot-dot" style="--op:0.2;--dur2:2.0s;--dl:0.6s"></div>
+            <div class="slot-dot" style="--op:0.7;--dur2:1.3s;--dl:0.3s"></div>
+            <div class="slot-dot" style="--op:0.5;--dur2:1.6s;--dl:0.8s"></div>
+            <div class="slot-dot" style="--op:0.3;--dur2:1.9s;--dl:0.2s"></div>
+            <p class="slot-vis-caption">RNG — Miliaran Kemungkinan / Detik</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slot-cards-grid">
+        <div class="slot-card">
+          <span class="slot-card-icon">🎰</span>
+          <div class="slot-card-title">RTP &amp; Volatilitas</div>
+          <p class="slot-card-text">Return to Player (RTP) adalah persentase teoritis yang dikembalikan ke pemain. Desainer menggunakannya bersama volatilitas untuk menciptakan "ritme" permainan — kapan kemenangan kecil sering muncul, kapan jackpot besar terasa seperti kejutan dramatis.</p>
+        </div>
+        <div class="slot-card">
+          <span class="slot-card-icon">🖥️</span>
+          <div class="slot-card-title">Engine Grafis Real-Time</div>
+          <p class="slot-card-text">Studio modern menggunakan engine seperti Unity atau HTML5 WebGL untuk merender animasi 3D secara real-time. Artinya, setiap ledakan, partikel cahaya, dan karakter bergerak diproses secara langsung — bukan sekadar video yang diputar ulang.</p>
+        </div>
+        <div class="slot-card">
+          <span class="slot-card-icon">🤖</span>
+          <div class="slot-card-title">AI Adaptive Experience</div>
+          <p class="slot-card-text">Generasi terbaru mulai mengintegrasikan AI yang mempelajari pola bermain pengguna — menyesuaikan intensitas visual dan audio untuk mempertahankan tingkat keterlibatan optimal tanpa menurunkan unsur kejutan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PULL QUOTE -->
+    <div class="slot-pull-quote slot-reveal">
+      <p>"Game slot bukan hanya tentang keberuntungan. Ini adalah orkestra yang dirancang dengan sangat teliti — di mana setiap not, setiap piksel, dan setiap milidetik animasi memiliki tujuan psikologis yang jelas."</p>
+      <cite>— Prinsip Desain Game Kasino Modern</cite>
+    </div>
+
+    <!-- SECTION 2 -->
+    <section class="slot-section slot-reveal">
+      <div class="slot-section-label">02 — Desain Audio</div>
+      <h2 class="slot-section-title">Musik yang <em>Memanipulasi</em> Emosi Kita</h2>
+
+      <div class="slot-split slot-reverse">
+        <div>
+          <p class="slot-body-text">Jika visual adalah wajah dari sebuah game slot, maka musik adalah jiwanya. Setiap nada, setiap efek suara, bahkan keheningan yang diperhitungkan — semuanya lahir dari penelitian mendalam tentang psikologi manusia dan respons emosional terhadap suara.</p>
+          <p class="slot-body-text" style="margin-top:20px;">Studio rekaman khusus game mempekerjakan komposer, sound designer, dan psikolog dalam satu tim. Mereka tahu bahwa tempo musik yang lebih cepat meningkatkan detak jantung dan menciptakan urgensi. Dan yang paling halus: suara "near-miss" dirancang untuk terdengar hampir sama memuaskannya dengan kemenangan sungguhan.</p>
+        </div>
+        <div class="slot-visual">
+          <div class="slot-sound-bars">
+            <div class="slot-bar" style="--bh:40px;--bd:0.8s;--bdelay:0.0s"></div>
+            <div class="slot-bar" style="--bh:70px;--bd:0.6s;--bdelay:0.1s"></div>
+            <div class="slot-bar" style="--bh:55px;--bd:1.0s;--bdelay:0.2s"></div>
+            <div class="slot-bar" style="--bh:85px;--bd:0.7s;--bdelay:0.05s"></div>
+            <div class="slot-bar" style="--bh:45px;--bd:0.9s;--bdelay:0.3s"></div>
+            <div class="slot-bar" style="--bh:75px;--bd:0.65s;--bdelay:0.15s"></div>
+            <div class="slot-bar" style="--bh:60px;--bd:1.1s;--bdelay:0.25s"></div>
+            <div class="slot-bar" style="--bh:90px;--bd:0.75s;--bdelay:0.0s"></div>
+            <div class="slot-bar" style="--bh:50px;--bd:0.85s;--bdelay:0.35s"></div>
+            <div class="slot-bar" style="--bh:65px;--bd:0.95s;--bdelay:0.1s"></div>
+            <div class="slot-bar" style="--bh:35px;--bd:0.7s;--bdelay:0.4s"></div>
+            <div class="slot-bar" style="--bh:80px;--bd:0.6s;--bdelay:0.05s"></div>
+            <div class="slot-bar" style="--bh:55px;--bd:1.05s;--bdelay:0.2s"></div>
+            <div class="slot-bar" style="--bh:70px;--bd:0.8s;--bdelay:0.3s"></div>
+            <div class="slot-bar" style="--bh:45px;--bd:0.9s;--bdelay:0.15s"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slot-cards-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="slot-card">
+          <span class="slot-card-icon">🎵</span>
+          <div class="slot-card-title">Musik Adaptif</div>
+          <p class="slot-card-text">Sistem musik modern menggunakan lapisan audio yang secara dinamis "ditambah" berdasarkan aksi game — semakin dekat jackpot, semakin banyak instrumen yang masuk. Teknik ini disebut "vertical layering" dalam game audio design.</p>
+        </div>
+        <div class="slot-card">
+          <span class="slot-card-icon">🔊</span>
+          <div class="slot-card-title">Spatial Audio &amp; 3D Sound</div>
+          <p class="slot-card-text">Game slot premium mulai mengadopsi spatial audio — teknologi yang menciptakan ilusi suara dari berbagai arah. Koin yang jatuh terdengar seperti benar-benar berjatuhan di sekitar pengguna, menciptakan pengalaman yang sangat imersif.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="slot-section slot-reveal">
+      <div class="slot-section-label">03 — Estetika Visual</div>
+      <h2 class="slot-section-title">Visual Sebagai <em>Bahasa Emosi</em></h2>
+
+      <p class="slot-body-text">Dunia visual desain slot modern adalah dunia di mana batas antara game dan sinema semakin kabur. Tim artistik terdiri dari seniman konsep, animator 3D, ahli partikel efek, hingga colorist — persis seperti produksi film Hollywood.</p>
+      <p class="slot-body-text" style="margin-top:20px;">Setiap tema game dibangun melalui proses riset dan pengembangan visual yang ketat. Tim artistik mempelajari referensi sejarah asli, menciptakan palet warna yang konsisten, merancang tipografi khusus, dan bahkan membangun "bible" artistik setebal ratusan halaman hanya untuk satu judul game.</p>
+
+      <div class="slot-cards-grid" style="margin-top:48px;">
+        <div class="slot-card">
+          <span class="slot-card-icon">🎨</span>
+          <div class="slot-card-title">Psikologi Warna</div>
+          <p class="slot-card-text">Merah dan emas mendominasi desain slot karena secara psikologis dikaitkan dengan kemewahan, energi, dan kemenangan. Biru gelap menciptakan ketenangan yang membuat pemain betah berlama-lama. Setiap keputusan warna memiliki alasan ilmiah.</p>
+        </div>
+        <div class="slot-card">
+          <span class="slot-card-icon">✨</span>
+          <div class="slot-card-title">Particle System &amp; FX</div>
+          <p class="slot-card-text">Efek partikel — percikan cahaya, koin berterbangan, ledakan cahaya — adalah "hadiah visual" yang memperkuat sensasi kemenangan. Desainer secara teliti mengkalkulasi intensitas, durasi, dan pola partikel untuk memaksimalkan respons emosional pemain.</p>
+        </div>
+        <div class="slot-card">
+          <span class="slot-card-icon">🎬</span>
+          <div class="slot-card-title">Animasi Karakter</div>
+          <p class="slot-card-text">Karakter dalam slot modern bergerak, bereaksi, dan bahkan "merayakan" kemenangan bersama pemain. Studio menggunakan motion capture dan rigging 3D untuk menciptakan animasi yang natural dan ekspresif.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="slot-section slot-reveal">
+      <div class="slot-section-label">04 — Evolusi</div>
+      <h2 class="slot-section-title">Dari Mekanik ke <em>Metaverse</em></h2>
+
+      <p class="slot-body-text">Perjalanan desain game slot adalah cerminan dari evolusi teknologi itu sendiri — dari gear dan per baja, menuju piksel, dan kini menuju pengalaman imersif berbasis AI.</p>
+
+      <div class="slot-timeline">
+        <div class="slot-tl-item">
+          <div class="slot-tl-year">1890-an — Era Mekanik</div>
+          <div class="slot-tl-title">Liberty Bell &amp; Logika Gear</div>
+          <p class="slot-tl-text">Charles Fey menciptakan mesin slot pertama dengan tiga gulungan mekanik. "Desain" hanya berarti bagaimana gear dan per bekerja. Simbol buah dipilih bukan karena estetika, tapi karena mudah diproduksi di atas logam.</p>
+        </div>
+        <div class="slot-tl-item">
+          <div class="slot-tl-year">1970-an — Era Elektronik</div>
+          <div class="slot-tl-title">Video Slot &amp; Layar Pertama</div>
+          <p class="slot-tl-text">Fortune Coin memperkenalkan layar video pertama pada slot. Ini membuka pintu bagi desainer grafis. Warna, animasi sederhana, dan tema mulai bisa dieksplorasi — dimulailah era desain visual yang sesungguhnya.</p>
+        </div>
+        <div class="slot-tl-item">
+          <div class="slot-tl-year">2000-an — Era Digital</div>
+          <div class="slot-tl-title">Online Slot &amp; Revolusi HTML</div>
+          <p class="slot-tl-text">Internet mengubah segalanya. Slot tidak lagi dibatasi ukuran fisik mesin. Tim desainer tumbuh, musik mulai dibuat oleh komposer profesional, dan tema-tema kompleks menjadi standar industri.</p>
+        </div>
+        <div class="slot-tl-item">
+          <div class="slot-tl-year">2020-an — Era Imersif</div>
+          <div class="slot-tl-title">AI, VR &amp; Pengalaman Sinematik</div>
+          <p class="slot-tl-text">Kini, game slot top menawarkan kualitas visual setara game AAA konsol. Studio mengintegrasikan AI, spatial audio, dan bahkan teknologi VR. Batas antara bermain game dan menonton film blockbuster benar-benar telah hilang.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <div class="slot-closing slot-reveal">
+      <h2>Di Balik Setiap Putaran,<br>Ada <span style="color:var(--slot-gold);font-style:italic;">Ratusan Jam Kerja Keras</span></h2>
+      <p style="margin-top:24px;">Game slot modern adalah salah satu produk desain paling kompleks yang pernah diciptakan manusia — di mana matematika, psikologi, musik, dan seni visual berpadu dalam harmoni yang sempurna. Tapi di balik itu, ada tim ratusan orang yang mendedikasikan kecerdasan dan kreativitas mereka untuk menciptakan satu momen: rasa takjub yang kamu rasakan saat simbol-simbol itu berbaris sempurna.</p>
+    </div>
+
+  </main>
+
+  <footer class="slot-footer">
+    &copy; 2025 — Artikel Desain Game Slot Modern &middot; Teknologi, Musik &amp; Visual
+  </footer>
+
+</div><!-- end .slot-wrap -->
+
+<script>
+(function() {
+  // Scroll reveal — scoped agar tidak bentrok dengan JS lain di WordPress
+  if (typeof IntersectionObserver !== 'undefined') {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('slot-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.slot-reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  } else {
+    // Fallback untuk browser lama: langsung tampilkan semua
+    document.querySelectorAll('.slot-reveal').forEach(function(el) {
+      el.classList.add('slot-visible');
+    });
+  }
+})();
+</script>
